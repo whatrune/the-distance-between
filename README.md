@@ -33,7 +33,7 @@
 
 ### 始める
 
-- ▶️ **[On the Boundary](boundary.html)**
+- ▶️ **[On the Boundary](https://whatrune.github.io/the-distance-between/boundary.html)**
 
 ---
 
@@ -78,7 +78,7 @@ and no requirement to reach the end.
 ---
 ### Start Here
 
-- ▶️ **[On the Boundary](boundary.html)**
+- ▶️ **[On the Boundary](https://whatrune.github.io/the-distance-between/boundary.html)**
 
 ---
 
