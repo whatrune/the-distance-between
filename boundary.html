@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>On the Boundary</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="paper">
+<main>
+
+  <figure class="hero">
+    <img src="assets/boundary.jpg" alt="">
+  </figure>
+
+  <div class="text">
+これは、<br>
+本当は誰かに渡すつもりの<br>
+ものじゃなかった。<br><br>
+
+途中でやめて、<br>
+整理もしないまま、<br>
+ただ残しておいただけだ。<br><br>
+
+消す理由は、<br>
+いくつも考えられた。<br>
+残す理由も、<br>
+後からなら作れた。<br><br>
+
+線を引けば、<br>
+どちらかが嘘になる気がした。<br><br>
+
+消すか残すかの<br>
+境界に立ったまま、<br>
+決めきれずにいた。<br><br>
+
+だから今も、<br>
+ここにいる。
+  </div>
+
+  <div class="input-wrap">
+    <input id="q" type="text" autocomplete="off" autocapitalize="none" spellcheck="false">
+    <div id="msg" class="msg">向きが、少し違う。</div>
+  </div>
+  <div class="pager">1/9</div>
+</main>
+
+<script>
+const ANSWER="境界";
+const NEXT="single-word.html";
+const q=document.getElementById("q");
+const msg=document.getElementById("msg");
+function n(s){ try{s=s.normalize("NFKC")}catch(e){} return s.trim(); }
+let t=null;
+q.addEventListener("keydown",(e)=>{
+  if(e.key!=="Enter") return;
+  if(n(q.value)===ANSWER) location.href=NEXT;
+  else {
+    msg.classList.add("show");
+    clearTimeout(t);
+    t=setTimeout(()=>msg.classList.remove("show"), 900);
+  }
+});
+</script>
+</body>
+</html>

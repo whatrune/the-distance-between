@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>In the Silence</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="paper">
+<main>
+
+  <figure class="hero">
+    <img src="assets/in-the-silence.jpg" alt="">
+  </figure>
+
+  <div class="text">
+静けさの中では、<br>
+音の多さに気づく。<br><br>
+
+呼びかけても、<br>
+返事は返ってこない。<br><br>
+
+音が途切れると、<br>
+時間の進み方が変わる。<br><br>
+
+沈黙は、<br>
+何も起きていないようで、<br>
+意外と多くのことを<br>
+通してしまう。<br><br>
+
+誰にも届かないと分かっていると、<br>
+言葉を整える必要がなくなる。<br><br>
+
+余計な音が消えて、<br>
+空間に思考だけが残る。
+  </div>
+
+  <div class="input-wrap">
+    <input id="q" type="text" autocomplete="off" autocapitalize="none" spellcheck="false">
+    <div id="msg" class="msg">その言葉は、今じゃない。</div>
+  </div>
+  <div class="pager">6/9</div>
+</main>
+
+<script>
+const ANSWER="静寂";
+const NEXT="by-the-moon.html";
+const q=document.getElementById("q");
+const msg=document.getElementById("msg");
+function n(s){ try{s=s.normalize("NFKC")}catch(e){} return s.trim(); }
+let t=null;
+q.addEventListener("keydown",(e)=>{
+  if(e.key!=="Enter") return;
+  if(n(q.value)===ANSWER) location.href=NEXT;
+  else {
+    msg.classList.add("show");
+    clearTimeout(t);
+    t=setTimeout(()=>msg.classList.remove("show"), 900);
+  }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>What Still Shows</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="paper">
+<main>
+
+  <figure class="hero">
+    <img src="assets/what-still-shows.jpg" alt="">
+  </figure>
+
+  <div class="text">
+形がはっきりしているものほど、<br>
+見失いやすい。<br><br>
+
+細部より、<br>
+配置の方が先に目に入る。<br><br>
+
+夜空を見ると、<br>
+それがよく分かる。<br><br>
+
+光の並びだけを追うと、<br>
+位置を間違える。<br><br>
+
+見えていなかったのは、<br>
+光そのものじゃない。<br><br>
+
+残っていたのは、<br>
+対になる存在だった。
+  </div>
+
+  <div class="input-wrap">
+    <input id="q" type="text" autocomplete="off" autocapitalize="none" spellcheck="false">
+    <div id="msg" class="msg">まだ見えていない。</div>
+  </div>
+  <div class="pager">4/9</div>
+</main>
+
+<script>
+const ANSWER="影";
+const NEXT="didnt-answer.html";
+const q=document.getElementById("q");
+const msg=document.getElementById("msg");
+function n(s){ try{s=s.normalize("NFKC")}catch(e){} return s.trim(); }
+let t=null;
+q.addEventListener("keydown",(e)=>{
+  if(e.key!=="Enter") return;
+  if(n(q.value)===ANSWER) location.href=NEXT;
+  else {
+    msg.classList.add("show");
+    clearTimeout(t);
+    t=setTimeout(()=>msg.classList.remove("show"), 900);
+  }
+});
+</script>
+</body>
+</html>

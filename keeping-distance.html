@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Keeping Distance</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="paper">
+<main>
+
+  <figure class="hero">
+    <img src="assets/keeping-distance.jpg" alt="">
+  </figure>
+
+  <div class="text">
+近づきすぎると、<br>
+見えなくなる。<br><br>
+
+離れすぎると、<br>
+分からなくなる。<br><br>
+
+ちょうどいい間合いは、<br>
+その都度変わる。<br><br>
+
+正解を当てるより、<br>
+壊さないことの方が<br>
+大事な場面がある。<br><br>
+
+踏み込みすぎず、<br>
+背を向けすぎない。<br><br>
+
+その位置を探すのに、<br>
+時間がかかった。<br><br>
+
+正しさじゃなく、<br>
+保っていたかった何かを、<br>
+測り続けていた。
+  </div>
+
+  <div class="input-wrap">
+    <input id="q" type="text" autocomplete="off" autocapitalize="none" spellcheck="false">
+    <div id="msg" class="msg">近すぎる。</div>
+  </div>
+  <div class="pager">3/9</div>
+</main>
+
+<script>
+const ANSWER="距離";
+const NEXT="what-still-shows.html";
+const q=document.getElementById("q");
+const msg=document.getElementById("msg");
+function n(s){ try{s=s.normalize("NFKC")}catch(e){} return s.trim(); }
+let t=null;
+q.addEventListener("keydown",(e)=>{
+  if(e.key!=="Enter") return;
+  if(n(q.value)===ANSWER) location.href=NEXT;
+  else {
+    msg.classList.add("show");
+    clearTimeout(t);
+    t=setTimeout(()=>msg.classList.remove("show"), 900);
+  }
+});
+</script>
+</body>
+</html>

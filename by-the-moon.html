@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>By the Moon</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="night">
+<main>
+
+  <figure class="hero">
+    <img src="assets/by-the-moon.jpg" alt="">
+  </figure>
+
+  <div class="text">
+正解じゃなくていい。<br><br>
+
+放たれたのは、<br>
+当てるためじゃない。<br>
+向きを決めるためだった。<br><br>
+今、<br>
+どちらが明るいかだけ<br>
+分かればいい。<br><br>
+
+夜でも、<br>
+向きは失われない。<br><br>
+
+答えを探す代わりに、<br>
+目印を探した。<br><br>
+
+空にある、<br>
+一番分かりやすい目印を。<br><br>
+
+星の配置は、<br>
+名前を知らなくても<br>
+使える。<br><br>
+
+それで、<br>
+十分だった。
+  </div>
+
+  <div class="input-wrap">
+    <input id="q" type="text" autocomplete="off" autocapitalize="none" spellcheck="false">
+    <div id="msg" class="msg">まだ夜じゃない。</div>
+  </div>
+
+</main>
+
+<script>
+const ANSWER = "月";
+const NEXT   = "left-there.html";
+
+// 補助キーワード（進行しない）
+const ALT     = "矢";
+const ALT_MSG = "放ったのは一体・・・";
+
+const q = document.getElementById("q");
+const msg = document.getElementById("msg");
+
+function n(s){
+  try { s = s.normalize("NFKC"); } catch(e) {}
+  return (s || "").trim().toLowerCase();
+}
+
+let t = null;
+function flash(text, ms=900, isRed=false){
+  msg.textContent = text;
+  msg.classList.toggle("alt", !!isRed); // 赤表示用クラス
+  msg.classList.add("show");
+  clearTimeout(t);
+  t = setTimeout(()=>{
+    msg.classList.remove("show");
+    msg.classList.remove("alt");
+  }, ms);
+}
+
+q.addEventListener("keydown", (e) => {
+  if (e.key !== "Enter") return;
+  const v = n(q.value);
+
+  if (v === n(ANSWER)) { location.href = NEXT; return; }
+
+  // 「矢」：赤文字で反応だけ返す
+  if (ALT && v === n(ALT)) { flash(ALT_MSG, 1200, true); return; }
+
+  flash(msg.textContent || "向きが、少し違う。", 900, false);
+});
+</script>
+
+</body>
+</html>

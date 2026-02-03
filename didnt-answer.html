@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Someone Who Didn't Answer</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="paper">
+<main>
+
+  <figure class="hero">
+    <img src="assets/didnt-answer.jpg" alt="">
+  </figure>
+
+  <div class="text">
+返事がないことに、<br>
+慣れるまで時間がかかった。<br><br>
+
+あの人は、<br>
+先に答えを言わなかった。<br><br>
+
+いつも、<br>
+「どう思う？」<br>
+とだけ聞いてきた。<br><br>
+
+優しかったのか、<br>
+突き放していたのか、<br>
+今でも分からない。<br><br>
+
+席が空いたまま、<br>
+埋まらない場所ができた。<br><br>
+
+それは、<br>
+ただいないというだけの<br>
+ことだったのか。<br><br>
+
+それとも、<br>
+何と形容するのか。
+
+  </div>
+
+  <div class="input-wrap">
+    <input id="q" type="text" autocomplete="off" autocapitalize="none" spellcheck="false">
+    <div id="msg" class="msg">返事はない。</div>
+  </div>
+  <div class="pager">5/9</div>
+</main>
+
+<script>
+const ANSWER="不在";
+const NEXT="in-the-silence.html";
+const q=document.getElementById("q");
+const msg=document.getElementById("msg");
+function n(s){ try{s=s.normalize("NFKC")}catch(e){} return s.trim(); }
+let t=null;
+q.addEventListener("keydown",(e)=>{
+  if(e.key!=="Enter") return;
+  if(n(q.value)===ANSWER) location.href=NEXT;
+  else {
+    msg.classList.add("show");
+    clearTimeout(t);
+    t=setTimeout(()=>msg.classList.remove("show"), 900);
+  }
+});
+</script>
+</body>
+</html>

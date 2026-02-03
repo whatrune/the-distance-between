@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Left There</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="night">
+<main>
+
+  <figure class="hero">
+    <img src="assets/left-there.jpg" alt="">
+  </figure>
+
+  <div class="text">
+この記録は、<br>
+本当は誰かに渡すつもりの<br>
+ものじゃなかった。<br><br>
+
+途中でやめて、<br>
+整理もしないまま、<br>
+ただ残しておいただけだ。<br><br>
+
+それでも、<br>
+ここまで辿った人が<br>
+いるのなら、<br>
+もう途中ではない。<br><br>
+
+読んでほしい人はいた。<br>
+でも、<br>
+ここにはいない。<br><br>
+
+それでも、<br>
+辿られたという事実だけで、<br>
+私はこれを<br>
+置いていける。<br><br>
+
+見えなくなったあとで、<br>
+進む向きが分かっただけでも、<br>
+十分だった。
+<br><br>
+
+最後に、<br>
+あなたへ託す。<br><br>
+
+<b>”言葉を、紡いで導いて”</b>
+<br>
+
+  </div>
+
+  <div class="input-wrap">
+    <input id="q" type="text" autocomplete="off" autocapitalize="none" spellcheck="false">
+    <div id="msg" class="msg">その名前は、ここではまだ。</div>
+  </div>
+  <div class="pager">8/9</div>
+</main>
+
+<script>
+const ANSWER="アルテミス";
+const NEXT="without-pointing.html";
+const q=document.getElementById("q");
+const msg=document.getElementById("msg");
+function n(s){ try{s=s.normalize("NFKC")}catch(e){} return s.trim().toLowerCase(); }
+let t=null;
+q.addEventListener("keydown",(e)=>{
+  if(e.key!=="Enter") return;
+  if(n(q.value)===n(ANSWER) || n(q.value)==="artemis") location.href=NEXT;
+  else {
+    msg.classList.add("show");
+    clearTimeout(t);
+    t=setTimeout(()=>msg.classList.remove("show"), 900);
+  }
+});
+</script>
+</body>
+</html>
